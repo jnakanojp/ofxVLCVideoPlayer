@@ -1,9 +1,8 @@
 #pragma once
 
-#include "ofMainWOVideoPlayer.h"
+#include "ofMain.h"
 #include <vlc/vlc.h>
 
-// TODO: スタートフレーム、エンドフレーム
 //class VLCMovie : public AbstractMovie, public ofBaseSoundOutput
 class VLCMovie
 {
