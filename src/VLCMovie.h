@@ -100,6 +100,8 @@ public:
     void setTimeMillis(libvlc_time_t ms);
     void setFrame(int frame);
     int getCurrentFrame();
+    void setVolume(int volume);
+    void toggleMute();
 
     //ofSoundStream soundStream;
     //SoundBuffer soundBuffer;

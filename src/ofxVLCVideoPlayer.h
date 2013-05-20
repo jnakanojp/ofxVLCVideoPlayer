@@ -36,5 +36,7 @@ public:
     void setFrame(int frame);
     int getCurrentFrame();
     int getTotalNumFrames();
+    void setVolume(int volume);
+    void toggleMute();
 };
 

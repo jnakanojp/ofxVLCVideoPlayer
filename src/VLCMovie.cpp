@@ -95,7 +95,7 @@ void VLCMovie::initializeVLC() {
 	cout << "Created Thumbnail" << endl;
 	cout << "Video:length " << video_length_ms << "(ms)" << endl;
 
-    libvlc_audio_output_set(mp, "waveout");
+    libvlc_audio_output_set(mp, "aout_directx");
     libvlc_video_set_callbacks(mp, lockStatic, unlockStatic, displayStatic, this);
     libvlc_video_set_format(mp, "RGBA", videoWidth, videoHeight, videoWidth * 4);
     
@@ -357,4 +357,12 @@ int VLCMovie::getCurrentFrame() {
 
 int VLCMovie::getTotalNumFrames() {
     return fps * video_length_ms / 1000;
+}
+
+void VLCMovie::setVolume(int volume) {
+    libvlc_audio_set_volume(mp, volume);
+}
+
+void VLCMovie::toggleMute() {
+    libvlc_audio_toggle_mute(mp);
 }

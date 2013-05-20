@@ -193,3 +193,15 @@ float ofxVLCVideoPlayer::getDuration() {
         return -1;
     }
 }
+
+void ofxVLCVideoPlayer::setVolume(int volume) {
+    if (vlcMovieInstance) {
+        vlcMovieInstance->setVolume(volume);
+    }
+}
+
+void ofxVLCVideoPlayer::toggleMute() {
+    if (vlcMovieInstance) {
+        vlcMovieInstance->toggleMute();
+    }
+}
