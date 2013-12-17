@@ -42,6 +42,7 @@ void VLCMovie::initializeVLC() {
         return;
     }
 
+    // *** list all audio output names ***
     //libvlc_audio_output_t *aout = libvlc_audio_output_list_get(libvlc);
     //while(aout) {
     //    cout << aout->psz_name << endl;
@@ -51,9 +52,15 @@ void VLCMovie::initializeVLC() {
 
     m = libvlc_media_new_path(libvlc, filename.c_str());
     mp = libvlc_media_player_new_from_media(m);
-    libvlc_audio_output_set(mp, "adummy");
+    
+    // *** if you want to change how to output audio, please change setting below
+    // *** you can get appreciate audio output name by libvlc_audio_output_list_get (code wrote and commented-out 10 lines above)
+    // libvlc_audio_output_set(mp, "adummy"); // audio output to buffer (need to setup callbacks with libvlc_audio_set_callbacks)
+    libvc_audio_output_set(mp, "waveout"); // audio output to MME Wave Out
+    // libvlc_audio_output_set(mp, "aout_directx"); // audio output with Direct X
+    
 
-    // TODO: libvlc_video_set_format‚Ì‘ã‚í‚è‚Élibvlc_video_set_format_callbacks‚ðŽg‚¤
+    // TODO: use libvlc_video_set_format_callbacks instead of libvlc_video_set_format
     videoWidth = 0;
     videoHeight = 0;
   //  libvlc_video_set_callbacks(mp, NULL, NULL, NULL, this);
