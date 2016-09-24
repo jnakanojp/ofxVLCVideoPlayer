@@ -5,7 +5,7 @@
 
 class ofxVLCVideoPlayer
 {
-    std::tr1::shared_ptr<VLCMovie> vlcMovieInstance;
+    shared_ptr<VLCMovie> vlcMovieInstance;
     ofTexture dummyTexture;
 	ofImage dummyImage;
 public:

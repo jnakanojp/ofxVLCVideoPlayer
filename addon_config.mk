@@ -61,9 +61,15 @@ common:
 	# ADDON_LIBS_EXCLUDE =
 
 vs:
-	ADDON_LIBS = libs/vlcSdk/lib/libvlc.lib
-	ADDON_LIBS += libs/vlcSdk/lib/libvlccore.lib
+	ADDON_LIBS = libs/vlcSdk/lib/vs/libvlc.lib
+	ADDON_LIBS += libs/vlcSdk/lib/vs/libvlccore.lib
     ADDON_INCLUDES_EXCLUDE = libs/
     ADDON_INCLUDES_EXCLUDE += libs/vlcSdk/include/%
     ADDON_INCLUDES_EXCLUDE += libs/vlcSrcSrc/include/%
-
+osx:
+	ADDON_LIBS = libs/vlcSdk/lib/osx/libvlc.dylib
+	ADDON_LIBS += libs/vlcSdk/lib/osx/libvlccore.dylib
+	ADDON_INCLUDES_EXCLUDE = libs/
+    ADDON_INCLUDES_EXCLUDE += libs/vlcSdk/include/%
+    ADDON_INCLUDES_EXCLUDE += libs/vlcSrcSrc/include/%
+	

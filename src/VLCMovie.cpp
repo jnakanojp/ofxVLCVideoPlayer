@@ -1,7 +1,7 @@
 //#define _WIN32_WINNT 0x0500
 #include "VLCMovie.h"
 #include <media_internal.h>
-#include <plugins/vlc_input_item.h>
+//#include <plugins/vlc_input_item.h>
 
 
 //libvlc_instance_t *VLCMovie::libvlc = NULL;
@@ -35,6 +35,7 @@ void VLCMovie::initializeVLC() {
     //if (!libvlc) {
         cout << "init libvlc" << endl;
         char const *vlc_argv[] = {
+            "--plugin-path=../../../data/",
             "--no-osd"
         };
 
@@ -93,11 +94,25 @@ cout << "libvlc: " << libvlc << endl;
 	thumbnailImage.allocate(videoWidth, videoHeight, OF_IMAGE_COLOR_ALPHA);
 
     libvlc_media_player_play(mp);
-Sleep(500);
+#ifdef WIN32
+    Sleep(500);
+#else
+    usleep(500 * 1000);
+#endif
+
     libvlc_media_player_set_position(mp, 0.5);
-Sleep(500);
+#ifdef WIN32
+    Sleep(500);
+#else
+    usleep(500 * 1000);
+#endif
+    
 	while (!isThumbnailOK) {
+#ifdef WIN32
         Sleep(100);
+#else
+        usleep(100 * 1000);
+#endif
     }
     libvlc_media_player_stop(mp);
     libvlc_media_player_set_position(mp, 0);
@@ -246,7 +261,11 @@ void VLCMovie::vlcEvent(const libvlc_event_t *event) {
 
 void *VLCMovie::lock(void **p_pixels) {
     while (tryUpdate) {
+#ifdef WIN32
         Sleep(10);
+#else
+        usleep(10 * 1000);
+#endif
     }
     //backImageMutex.lock(10000);
     //imageFlipMutex.lock(10000);
@@ -264,7 +283,11 @@ void VLCMovie::unlock(void *id, void *const *p_pixels) {
 
 void VLCMovie::display(void *id) {
     while (tryUpdate) {
+#ifdef WIN32
         Sleep(10);
+#else
+        usleep(10 * 1000);
+#endif
     }
 
     //imageFlipMutex.lock(10000);

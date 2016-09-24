@@ -1,6 +1,6 @@
 #include "ofxVLCVideoPlayer.h"
 
-using std::tr1::shared_ptr;
+//using shared_ptr;
 
 ofxVLCVideoPlayer::ofxVLCVideoPlayer(void)
 {
