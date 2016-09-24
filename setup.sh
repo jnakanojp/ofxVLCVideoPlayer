@@ -5,10 +5,10 @@ mkdir archives
 cd archives
 
 echo "Downloading VLC 2.2.4 Source..."
-#wget http://download.videolan.org/pub/videolan/vlc/2.2.4/vlc-2.2.4.tar.xz
+wget http://download.videolan.org/pub/videolan/vlc/2.2.4/vlc-2.2.4.tar.xz
 
 echo "Downloading VLC 2.2.4 Mac OS X..."
-#wget http://download.videolan.org/pub/videolan/vlc/2.2.4/macosx/vlc-2.2.4.dmg
+wget http://download.videolan.org/pub/videolan/vlc/2.2.4/macosx/vlc-2.2.4.dmg
 
 cd ..
 
@@ -36,6 +36,9 @@ mkdir -p ../libs/vlcSrcInclude/include
 cp -a src/vlc-2.2.4/include ../libs/vlcSrcInclude/include
 #Remove-Item ..\libs\vlcSrcInclude\include\* -recurse -exclude *.h
 find ../libs/vlcSrcInclude/include -type f \! -name "*.h" -exec rm {} \;
+pushd ../libs/vlcSrcInclude
+patch -p1 < ../../macosx_atomic.patch
+popd
 
 mkdir -p ../libs/vlcSdk/include
 #Copy-Item win32\vlc-2.2.4\sdk\include\vlc\* -recurse -destination ..\libs\vlcSdk\include

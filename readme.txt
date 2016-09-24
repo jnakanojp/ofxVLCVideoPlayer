@@ -9,6 +9,6 @@ How to use:
 
 3. Copy files of copy_to_bin dir to bin dir.
 
-5. If you are developing with Visual Studio, change project's linker optimization setting /OPT:REF to /OPT:NOREF(On default, it is set on Release build).
+4. If you are developing with Visual Studio, add additional library directory “change project's linker optimization setting /OPT:REF to /OPT:NOREF(On default, it is set on Release build) and linker advanced setting /SAFESH:NO.
 
 2016/9/24

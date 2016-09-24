@@ -1,0 +1,12 @@
+diff -urN vlcSrcIncludeOrig/include/include/vlc_atomic.h vlcSrcInclude/include/include/vlc_atomic.h
+--- vlcSrcIncludeOrig/include/include/vlc_atomic.h	2016-09-25 00:52:06.000000000 +0900
++++ vlcSrcInclude/include/include/vlc_atomic.h	2016-09-25 00:52:21.000000000 +0900
+@@ -402,7 +402,7 @@
+ # endif
+ # endif
+ 
+-typedef atomic_uint_least32_t vlc_atomic_float;
++typedef std::atomic_uint_least32_t vlc_atomic_float;
+ 
+ static inline void vlc_atomic_init_float(vlc_atomic_float *var, float f)
+ {
