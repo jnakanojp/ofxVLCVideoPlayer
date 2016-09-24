@@ -1,8 +1,14 @@
 #pragma once
 
 #include "ofMain.h"
+#ifdef WIN32
+#define LIBVLC_USE_PTHREAD_CANCEL
+typedef SSIZE_T ssize_t;
+#endif
 #include <vlc/vlc.h>
+#include <memory>
 
+// TODO: スタートフレーム、エンドフレーム
 //class VLCMovie : public AbstractMovie, public ofBaseSoundOutput
 class VLCMovie
 {
@@ -13,6 +19,7 @@ class VLCMovie
     ofTexture *frontTexture;
 	ofImage thumbnailImage;
 
+    //static libvlc_instance_t *libvlc;
     libvlc_instance_t *libvlc;
     libvlc_media_t *m;
     libvlc_media_player_t *mp;
@@ -30,6 +37,7 @@ class VLCMovie
 	bool isThumbnailOK;
     bool isFliped;
     bool isLooping;
+    bool tryUpdate;
 
     bool movieFinished;
 
@@ -80,7 +88,6 @@ public:
     void init();
     void play();
     void rewind();
-    void pause();
     void stop();
     void seek(float position);
     void setLoop(bool isLooping);
