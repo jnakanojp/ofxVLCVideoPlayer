@@ -269,7 +269,7 @@ void *VLCMovie::lock(void **p_pixels) {
     }
     //backImageMutex.lock(10000);
     //imageFlipMutex.lock(10000);
-    *p_pixels = backImage->getPixels();
+    *p_pixels = backImage->getPixels().getData();
     //cout << "lock " << *p_pixels << endl;
     //imageFlipMutex.unlock();
     return NULL;
@@ -303,7 +303,7 @@ void VLCMovie::display(void *id) {
 }
 
 void *VLCMovie::lockForThumbnail(void **p_pixels) {
-	*p_pixels = thumbnailImage.getPixels();
+    *p_pixels = thumbnailImage.getPixels().getData();
     return NULL;
 }
 
