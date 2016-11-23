@@ -69,7 +69,7 @@ void ofxVLCVideoPlayer::stop() {
 
 bool ofxVLCVideoPlayer::getIsMovieDone() {
     if (vlcMovieInstance) {
-        vlcMovieInstance->isMovieFinished();
+        return vlcMovieInstance->isMovieFinished();
     } else {
         return true;
     }
